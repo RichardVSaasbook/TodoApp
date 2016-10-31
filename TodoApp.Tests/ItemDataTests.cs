@@ -13,14 +13,22 @@ namespace TodoApp.Tests
     /// </summary>
     public class ItemDataTests
     {
+        ItemData data;
+
+        /// <summary>
+        /// Create a new ItemDataTests.
+        /// </summary>
+        public ItemDataTests()
+        {
+            data = new ItemData();
+        }
+
         /// <summary>
         /// Ensure that adding an item works.
         /// </summary>
         [Fact]
         public void Test_AddItem()
         {
-            ItemData data = new ItemData();
-
             bool actual = data.AddItem(new Item { Description = "Make dinner.", CreationDate = DateTime.Now, UpdatedDate = DateTime.Now });
 
             Assert.True(actual);
@@ -32,7 +40,6 @@ namespace TodoApp.Tests
         [Fact]
         public void Test_RemoveItem()
         {
-            ItemData data = new ItemData();
             Item item = data.GetLastItem();
 
             bool actual = data.RemoveItem(item);
@@ -46,7 +53,6 @@ namespace TodoApp.Tests
         [Fact]
         public void Test_UpdateItem()
         {
-            ItemData data = new ItemData();
             Item item = data.GetLastItem();
             item.Description = "Mow the lawn.";
 
@@ -61,7 +67,6 @@ namespace TodoApp.Tests
         [Fact]
         public void Test_MarkItemComplete()
         {
-            ItemData data = new ItemData();
             Item item = data.GetLastItem();
 
             bool actual = data.MarkItemComplete(item);
@@ -75,12 +80,23 @@ namespace TodoApp.Tests
         [Fact]
         public void Test_MarkItemIncomplete()
         {
-            ItemData data = new ItemData();
             Item item = data.GetLastItem();
 
             bool actual = data.MarkItemIncomplete(item);
 
             Assert.True(actual);
+        }
+
+        /// <summary>
+        /// Ensure that we can list all of the Items.
+        /// </summary>
+        [Fact]
+        public void Test_ListItems()
+        {
+            List<Item> actual = data.ListItems();
+
+            Assert.NotNull(actual);
+            Assert.NotEmpty(actual);
         }
     }
 }

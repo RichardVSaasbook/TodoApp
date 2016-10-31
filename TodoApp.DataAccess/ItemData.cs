@@ -86,5 +86,14 @@ namespace TodoApp.DataAccess
             item.IsComplete = false;
             return UpdateItem(item);
         }
+
+        /// <summary>
+        /// List all of the todo Items.
+        /// </summary>
+        /// <returns>The List of Items.</returns>
+        public List<Item> ListItems()
+        {
+            return db.Items.ToList();
+        }
     }
 }
