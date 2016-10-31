@@ -54,5 +54,33 @@ namespace TodoApp.Tests
 
             Assert.True(actual);
         }
+
+        /// <summary>
+        /// Ensure that we can mark an item as complete.
+        /// </summary>
+        [Fact]
+        public void Test_MarkItemComplete()
+        {
+            ItemData data = new ItemData();
+            Item item = data.GetLastItem();
+
+            bool actual = data.MarkItemComplete(item);
+
+            Assert.True(actual);
+        }
+
+        /// <summary>
+        /// Ensure that we can mark an item as incomplete.
+        /// </summary>
+        [Fact]
+        public void Test_MarkItemIncomplete()
+        {
+            ItemData data = new ItemData();
+            Item item = data.GetLastItem();
+
+            bool actual = data.MarkItemIncomplete(item);
+
+            Assert.True(actual);
+        }
     }
 }

@@ -64,5 +64,27 @@ namespace TodoApp.DataAccess
             entry.State = System.Data.Entity.EntityState.Modified;
             return db.SaveChanges() > 0;
         }
+
+        /// <summary>
+        /// Marks an item complete.
+        /// </summary>
+        /// <param name="item">The Item to mark as complete.</param>
+        /// <returns>True if the operation was successful.</returns>
+        public bool MarkItemComplete(Item item)
+        {
+            item.IsComplete = true;
+            return UpdateItem(item);
+        }
+
+        /// <summary>
+        /// Marks an item incomplete.
+        /// </summary>
+        /// <param name="item">The Item to mark as incomplete.</param>
+        /// <returns>True if the operation was successful.</returns>
+        public bool MarkItemIncomplete(Item item)
+        {
+            item.IsComplete = false;
+            return UpdateItem(item);
+        }
     }
 }
