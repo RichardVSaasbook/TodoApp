@@ -98,5 +98,18 @@ namespace TodoApp.Tests
             Assert.NotNull(actual);
             Assert.NotEmpty(actual);
         }
+
+        /// <summary>
+        /// Ensure that we can list all of the completed Items.
+        /// </summary>
+        [Fact]
+        public void Test_ListCompleteItems()
+        {
+            data.MarkItemComplete(data.GetLastItem());
+            List<Item> actual = data.ListCompletedItems();
+
+            Assert.NotNull(actual);
+            Assert.NotEmpty(actual);
+        }
     }
 }
