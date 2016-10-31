@@ -29,7 +29,7 @@ namespace TodoApp.Tests
         [Fact]
         public void Test_AddItem()
         {
-            bool actual = data.AddItem(new Item { Description = "Make dinner.", CreationDate = DateTime.Now, UpdatedDate = DateTime.Now });
+            bool actual = data.AddItem(new Item { Description = "Make dinner." });
 
             Assert.True(actual);
         }

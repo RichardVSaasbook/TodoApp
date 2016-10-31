@@ -37,6 +37,8 @@ namespace TodoApp.DataAccess
         /// <returns>True if the addition was successful.</returns>
         public bool AddItem(Item item)
         {
+            item.CreationDate = DateTime.Now;
+            item.UpdatedDate = DateTime.Now;
             db.Items.Add(item);
             return db.SaveChanges() > 0;
         }
