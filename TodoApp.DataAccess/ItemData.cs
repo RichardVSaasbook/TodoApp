@@ -104,5 +104,14 @@ namespace TodoApp.DataAccess
         {
             return db.Items.Where(i => i.IsComplete).ToList();
         }
+
+        /// <summary>
+        /// List all of the incompleted todo Items.
+        /// </summary>
+        /// <returns>The List of incompleted Items.</returns>
+        public List<Item> ListIncompletedItems()
+        {
+            return db.Items.Where(i => !i.IsComplete).ToList();
+        }
     }
 }
