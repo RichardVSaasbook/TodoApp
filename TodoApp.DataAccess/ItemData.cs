@@ -44,11 +44,24 @@ namespace TodoApp.DataAccess
         /// <summary>
         /// Removes an item from the list.
         /// </summary>
-        /// <param name="item"></param>
-        /// <returns></returns>
+        /// <param name="item">The Item to remove.</param>
+        /// <returns>True if the removal was successful.</returns>
         public bool RemoveItem(Item item)
         {
             db.Items.Remove(item);
+            return db.SaveChanges() > 0;
+        }
+
+        /// <summary>
+        /// Update an item.
+        /// </summary>
+        /// <param name="item">The Item to update.</param>
+        /// <returns>True if the update was successful.</returns>
+        public bool UpdateItem(Item item)
+        {
+            item.UpdatedDate = DateTime.Now;
+            var entry = db.Entry(item);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return db.SaveChanges() > 0;
         }
     }
