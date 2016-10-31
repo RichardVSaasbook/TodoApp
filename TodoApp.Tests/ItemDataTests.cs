@@ -25,5 +25,20 @@ namespace TodoApp.Tests
 
             Assert.True(actual);
         }
+
+        /// <summary>
+        /// Ensure that removing an item works.
+        /// </summary>
+        [Fact]
+        public void Test_RemoveItem()
+        {
+            ItemData data = new ItemData();
+
+            Item item = data.GetLastItem();
+
+            bool actual = data.RemoveItem(item);
+
+            Assert.True(actual);
+        }
     }
 }

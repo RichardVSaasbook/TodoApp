@@ -22,6 +22,15 @@ namespace TodoApp.DataAccess
         }
 
         /// <summary>
+        /// Gets the last created item.
+        /// </summary>
+        /// <returns>The Item if the Id is valid, null otherwise.</returns>
+        public Item GetLastItem()
+        {
+            return db.Items.OrderByDescending(i => i.CreationDate).First();
+        }
+
+        /// <summary>
         /// Add an Item to the Todo database.
         /// </summary>
         /// <param name="item">The Item to add.</param>
@@ -29,6 +38,17 @@ namespace TodoApp.DataAccess
         public bool AddItem(Item item)
         {
             db.Items.Add(item);
+            return db.SaveChanges() > 0;
+        }
+
+        /// <summary>
+        /// Removes an item from the list.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public bool RemoveItem(Item item)
+        {
+            db.Items.Remove(item);
             return db.SaveChanges() > 0;
         }
     }
