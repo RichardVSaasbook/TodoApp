@@ -18,5 +18,6 @@ namespace TodoApp.DataAccess
         public string Description { get; set; }
         public bool IsComplete { get; set; }
         public System.DateTime CreationDate { get; set; }
+        public System.DateTime UpdatedDate { get; set; }
     }
 }
